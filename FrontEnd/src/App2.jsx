@@ -16,9 +16,10 @@ const App = () => {
 
     const note = notes.find(n=>n.id === id)
     const changedNote ={...note, important: !note.important}
+    
 
     noteService.update(id, changedNote).then(returnedNote =>{
-      
+      console.log("returned note ", returnedNote)
       setNotes(notes.map(note => note.id!==id? note: returnedNote))
       //set response data where id matches the passed id,
       //everywhere else keep the note the same. 
@@ -51,7 +52,7 @@ const App = () => {
     const noteObject = {
       content: newNote,
       date: new Date().toISOString(),
-      important: Math.random() < 0.5,
+      important: true,
       
     }
 
